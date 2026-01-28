@@ -1,0 +1,42 @@
+body{
+    background-color: black;
+    color:white;
+    
+}
+
+
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+li{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color:red;
+}
+
+
+img{
+    /* Change the border and padding of all images to a 1 pixel solid red line and 5 pixels, respectively. */
+    /* border: 1px solid red;  */
+    margin:5px;
+    max-width: 300px;
+
+}
+
+.artist{
+   border-style: none;
+    
+}
+
+.spotlight{
+    /* Give it a padding of 10 pixels.
+Change the border to be a 3 pixel dotted yellow line.
+Restrict the width to 300 pixels.
+Use the text-align property so that everything in the div is centered. */
+    padding: 10px;
+    border: 3px dotted yellow;
+    max-width: 300px;
+    text-align: center;
+}
