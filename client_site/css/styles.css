@@ -1,3 +1,8 @@
+/* 
+   Name: [Your Name]
+   Date: February 7, 2026
+   Description: Main stylesheet for 401 Thrift website - includes responsive design, header, navigation, and content styling
+*/
 
 /* ===== GLOBAL STYLES ===== */
 * {
@@ -44,9 +49,9 @@ body {
 .nav-menu a {
     color: #ecf0f1;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 5px;
     transition: all 0.3s ease;
 }
@@ -73,7 +78,8 @@ body {
 
 /* ===== MAIN CONTENT STYLES ===== */
 .content {
-    max-width: 900px;
+    max-width: 1200px;
+    width: 90%;
     margin: 40px auto;
     padding: 40px;
     background-color: #ffffff;
@@ -85,7 +91,7 @@ body {
 /* Main Heading Styles */
 h1 {
     font-family: 'Georgia', 'Times New Roman', serif;
-    font-size: 2.5em;
+    font-size: 3em;
     color: #2c3e50;
     margin-bottom: 20px;
     text-align: center;
@@ -96,7 +102,7 @@ h1 {
 /* Subsection Heading Styles */
 h2 {
     font-family: 'Georgia', 'Times New Roman', serif;
-    font-size: 1.8em;
+    font-size: 2.2em;
     color: #34495e;
     margin-top: 30px;
     margin-bottom: 15px;
@@ -104,19 +110,19 @@ h2 {
     padding-left: 15px;
 }
 
-
 /* Paragraph Styles */
 p {
     font-family: 'Arial', 'Helvetica', sans-serif;
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: #555;
     margin-bottom: 20px;
     text-align: justify;
+    line-height: 1.8;
 }
 
 /* ===== IMAGE STYLES ===== */
 .content-image {
-    max-width: 300px;
+    max-width: 100%;
     height: auto;
     float: right;
     margin: 0 0 20px 25px;
@@ -134,8 +140,8 @@ img {
 .cta-button {
     display: block;
     margin: 30px auto 0;
-    padding: 15px 40px;
-    font-size: 1.1em;
+    padding: 18px 50px;
+    font-size: 1.3em;
     font-weight: 600;
     color: #ffffff;
     background-color: #f39c12;
@@ -160,13 +166,37 @@ img {
 /* Call to Action Message Styling */
 #cta-message {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.4em;
     color: #2c3e50;
     font-weight: 600;
     margin-top: 25px;
 }
 
 /* ===== RESPONSIVE WEB DESIGN ===== */
+
+/* Large Desktop Screens (1200px and above) */
+@media screen and (min-width: 1200px) {
+    .content {
+        width: 85%;
+        padding: 50px;
+    }
+
+    h1 {
+        font-size: 3.5em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 1.25em;
+    }
+
+    .nav-menu a {
+        font-size: 20px;
+    }
+}
 
 /* Tablet Screens (768px and below) */
 @media screen and (max-width: 768px) {
@@ -260,3 +290,295 @@ img {
     }
 }
 
+/* ===== SHOP PAGE STYLES ===== */
+
+/* Filter Section */
+.filter-section {
+    display: flex;
+    gap: 15px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #bdc3c7;
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background-color: #f39c12;
+    color: #ffffff;
+    border-color: #f39c12;
+}
+
+/* Products Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.product-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 0.95em;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #27ae60;
+    margin-bottom: 5px;
+}
+
+.product-bid {
+    font-size: 1em;
+    color: #e67e22;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.buy-btn, .bid-btn {
+    width: 48%;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buy-btn {
+    background-color: #27ae60;
+    color: #ffffff;
+    margin-right: 4%;
+}
+
+.buy-btn:hover {
+    background-color: #229954;
+}
+
+.bid-btn {
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.bid-btn:hover {
+    background-color: #2980b9;
+}
+
+.shop-info {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+}
+
+/* ===== ABOUT PAGE STYLES ===== */
+
+.values-list p {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    border-left: 3px solid #f39c12;
+}
+
+.values-list strong {
+    color: #2c3e50;
+    font-size: 1.1em;
+}
+
+.about-cta {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+}
+
+.about-cta p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* ===== CONTACT PAGE STYLES ===== */
+
+.contact-form-container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #f39c12;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: 600;
+    background-color: #f39c12;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #e67e22;
+    transform: translateY(-2px);
+}
+
+.form-status {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.form-status.success {
+    color: #27ae60;
+}
+
+.form-status.error {
+    color: #e74c3c;
+}
+
+/* Contact Info Grid */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.contact-info-item {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.contact-info-item h3 {
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.contact-info-item a {
+    color: #f39c12;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-info-item a:hover {
+    text-decoration: underline;
+}
+
+/* FAQ Section */
+.faq-section {
+    margin-top: 30px;
+}
+
+.faq-item {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border-left: 4px solid #f39c12;
+}
+
+.faq-question {
+    font-size: 1.3em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #f39c12;
+}
+
+.faq-answer {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+}

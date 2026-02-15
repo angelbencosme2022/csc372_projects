@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - 401 Thrift</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 
+        Name: [Your Name]
+        Date: February 7, 2026
+        Description: Contact page for 401 Thrift - Get in touch with us
+    -->
+
+    <!-- Header Section -->
+    <div class="header">
+        <img src="images/logo.png" alt="401 Thrift Logo - Vintage clothing and unique finds" class="logo">
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="content">
+        <!-- Main Heading -->
+        <h1>Get In Touch</h1>
+
+        <!-- Introduction -->
+        <p>
+            Have questions about an item? Want to know when new inventory drops? Interested in selling your vintage 
+            pieces to us? We'd love to hear from you! Fill out the form below and we'll get back to you as soon as 
+            possible.
+        </p>
+
+        <!-- Contact Form Section -->
+        <h2>Send Us a Message</h2>
+
+        <div class="contact-form-container">
+            <div class="form-group">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject *</label>
+                <select id="subject" name="subject" required>
+                    <option value="">-- Select a subject --</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="item">Question About an Item</option>
+                    <option value="order">Order Status</option>
+                    <option value="selling">I Want to Sell Items</option>
+                    <option value="bidding">Bidding Question</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your Message *</label>
+                <textarea id="message" name="message" rows="6" placeholder="Tell us what's on your mind..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
+            
+            <p id="form-status" class="form-status"></p>
+        </div>
+
+        <!-- Contact Information Section -->
+        <h2>Other Ways to Reach Us</h2>
+
+        <div class="contact-info-grid">
+            <div class="contact-info-item">
+                <h3>📧 Email</h3>
+                <p>
+                    <a href="mailto:hello@401thrift.com">hello@401thrift.com</a>
+                </p>
+                <p>We typically respond within 24 hours.</p>
+            </div>
+
+            <div class="contact-info-item">
+                <h3>📱 Social Media</h3>
+                <p>
+                    Follow us on Instagram: <a href="#" target="_blank">@401thrift</a>
+                </p>
+                <p>DM us for quick questions!</p>
+            </div>
+
+            <div class="contact-info-item">
+                <h3>⏰ Response Time</h3>
+                <p>Monday - Friday: 9am - 6pm EST</p>
+                <p>Weekend messages answered on Monday</p>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-section">
+            <div class="faq-item">
+                <h3 class="faq-question">How long does shipping take?</h3>
+                <p class="faq-answer">
+                    We ship within 1-2 business days of purchase. Delivery typically takes 3-5 business days 
+                    depending on your location. You'll receive tracking information once your order ships.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">What if an item doesn't fit?</h3>
+                <p class="faq-answer">
+                    We accept returns within 7 days of delivery. Items must be unworn and in the same condition 
+                    you received them. Contact us to initiate a return, and we'll provide a prepaid shipping label.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">How does bidding work?</h3>
+                <p class="faq-answer">
+                    When you place a bid, you're entering an auction for that item. Auctions typically run 3-7 days. 
+                    If someone outbids you, you'll receive a notification. The highest bidder when time runs out wins 
+                    the item. Don't want to bid? Use the "Buy Now" option for instant purchase.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">Do you buy vintage items?</h3>
+                <p class="faq-answer">
+                    Yes! We're always looking for quality vintage pieces. If you have items you'd like to sell, 
+                    send us photos and descriptions via email or use the contact form above. We'll review and 
+                    get back to you with an offer.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">Are the items authentic?</h3>
+                <p class="faq-answer">
+                    Absolutely. We carefully authenticate all branded items and provide detailed condition reports. 
+                    If we can't verify authenticity, we don't list it. Your trust is important to us.
+                </p>
+            </div>
+        </div>
+
+        <!-- Location/Hours -->
+        <h2>Visit Us</h2>
+        <p>
+            While 401 Thrift operates primarily online, we occasionally host pop-up shops and local events. 
+            Follow us on social media to stay updated on upcoming events where you can see items in person, 
+            meet the team, and discover exclusive finds!
+        </p>
+    </div>
+
+    <!-- Link to External JavaScript File -->
+    <script src="js/contact.js"></script>
+</body>
+</html>
