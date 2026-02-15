@@ -52,19 +52,32 @@ buyButtons.forEach(function(button) {
         const productCard = this.closest('.product-card');
         const productName = productCard.querySelector('h3').textContent;
         const productPrice = productCard.querySelector('.product-price').textContent;
+        const priceValue = parseFloat(productPrice.replace('Buy Now: $', ''));
+        
+        // Get product image
+        const productImage = productCard.querySelector('.product-image').src;
+        
+        // Create item object
+        const item = {
+            id: Date.now(), // Simple ID generation
+            name: productName,
+            price: priceValue,
+            image: productImage.includes('http') ? productImage : `images/product1.jpg`
+        };
+        
+        // Save to localStorage
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        cart.push(item);
+        localStorage.setItem('cart', JSON.stringify(cart));
         
         // Visual feedback
         this.textContent = 'Added to Cart!';
         this.style.backgroundColor = '#229954';
         
-        // Alert user
-        alert(`${productName} has been added to your cart!\n${productPrice}`);
-        
-        // Reset button after 2 seconds
+        // Redirect to checkout after brief delay
         setTimeout(() => {
-            this.textContent = 'Buy Now';
-            this.style.backgroundColor = '#27ae60';
-        }, 2000);
+            window.location.href = 'checkout.html';
+        }, 1000);
         
         console.log(`Purchase initiated: ${productName}`);
     });

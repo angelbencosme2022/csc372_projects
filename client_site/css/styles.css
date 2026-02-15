@@ -582,3 +582,254 @@ img {
     color: #555;
     line-height: 1.6;
 }
+
+/* ===== CHECKOUT PAGE STYLES ===== */
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    margin: 30px 0;
+}
+
+/* Order Summary */
+.order-summary {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.order-summary h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-left: none;
+    padding-left: 0;
+}
+
+#cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-details h4 {
+    font-size: 1.1em;
+    color: #2c3e50;
+    margin: 0 0 5px 0;
+}
+
+.cart-item-details p {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    margin: 3px 0;
+}
+
+.cart-item-price {
+    font-weight: 700;
+    color: #27ae60 !important;
+    font-size: 1.1em !important;
+}
+
+.order-total {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #e0e0e0;
+}
+
+.order-total p {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.total-line {
+    font-size: 1.3em !important;
+    color: #2c3e50 !important;
+    border-top: 2px solid #2c3e50;
+    padding-top: 15px;
+    margin-top: 15px !important;
+}
+
+/* Payment Form */
+.payment-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.payment-form h2 {
+    margin-top: 0;
+    border-left: none;
+    padding-left: 0;
+}
+
+.form-section {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-section h3 {
+    font-size: 1.3em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+}
+
+/* Stripe Card Element */
+.stripe-element {
+    padding: 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+.stripe-element:focus-within {
+    border-color: #f39c12;
+}
+
+#card-errors {
+    color: #fa755a;
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+
+/* Payment Button */
+.payment-btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.2em;
+    font-weight: 600;
+    background-color: #27ae60;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.payment-btn:hover:not(:disabled) {
+    background-color: #229954;
+    transform: translateY(-2px);
+}
+
+.payment-btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+/* Loading Spinner */
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ffffff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.spinner.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Payment Messages */
+.payment-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    display: none;
+}
+
+.payment-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.payment-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Security Info */
+.security-info {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e8f5e9;
+    border-left: 4px solid #27ae60;
+    border-radius: 6px;
+}
+
+.security-info p {
+    margin: 0;
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* Responsive Checkout */
+@media screen and (max-width: 768px) {
+    .checkout-container {
+        grid-template-columns: 1fr;
+    }
+
+    .order-summary {
+        position: static;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-item-image {
+        width: 60px;
+        height: 60px;
+    }
+}
