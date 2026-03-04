@@ -1,0 +1,82 @@
+<style>
+    :root {
+        --cream: #f5f0e8; --brown: #3a2a1a; --rust: #b5451b;
+        --tan: #c9a97a; --faded: #8a7a6a;
+    }
+    .error-page {
+        min-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+    }
+    .error-number {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-weight: 700;
+        font-size: clamp(6rem, 18vw, 12rem);
+        line-height: 0.9;
+        color: var(--brown);
+        position: relative;
+        margin-bottom: 1rem;
+    }
+    .error-number .zero { color: var(--rust); }
+    .tag {
+        background: var(--rust);
+        color: var(--cream);
+        font-family: 'Courier New', monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        padding: 0.3rem 0.8rem;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        transform: rotate(-1deg);
+    }
+    .error-headline {
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: 1.4rem;
+        color: var(--faded);
+        margin-bottom: 0.5rem;
+    }
+    .error-subtext {
+        color: var(--faded);
+        max-width: 380px;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+    .error-divider { width: 60px; height: 2px; background: var(--tan); margin: 0 auto 2rem; }
+    .btn {
+        font-family: 'Courier New', monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 0.7rem 1.6rem;
+        border: 2px solid var(--brown);
+        background: var(--brown);
+        color: var(--cream);
+        display: inline-block;
+        transition: all 0.18s ease;
+    }
+    .btn:hover { background: var(--rust); border-color: var(--rust); }
+</style>
+
+<div class="error-page">
+    <div class="tag">SERVER ERROR</div>
+
+    <div class="error-number">
+        5<span class="zero">0</span>0
+    </div>
+
+    <p class="error-headline">Something went wrong in the back room.</p>
+    <p class="error-subtext">
+        Our server hit a snag. This isn't your fault — we're on it.
+        Try refreshing, or head back home while we sort things out.
+    </p>
+
+    <div class="error-divider"></div>
+
+    <a href="/" class="btn">Back to Home</a>
+</div>

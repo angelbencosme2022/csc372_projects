@@ -1,0 +1,120 @@
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+        --cream: #f5f0e8; --brown: #3a2a1a; --rust: #b5451b;
+        --tan: #c9a97a; --faded: #8a7a6a; --tag-yellow: #f0d060;
+    }
+    .error-page {
+        min-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+        position: relative;
+    }
+    .price-tag {
+        background: var(--tag-yellow);
+        border: 2px solid var(--brown);
+        border-radius: 4px;
+        padding: 0.5rem 1.2rem 0.5rem 0.8rem;
+        font-family: 'Courier New', monospace;
+        font-size: 0.75rem;
+        color: var(--brown);
+        margin-bottom: 2rem;
+        display: inline-block;
+        transform: rotate(-2deg);
+        position: relative;
+    }
+    .price-tag::before {
+        content: '';
+        position: absolute;
+        left: -9px; top: 50%;
+        transform: translateY(-50%);
+        width: 9px; height: 9px;
+        border-radius: 50%;
+        border: 2px solid var(--brown);
+        background: var(--cream);
+    }
+    .error-number {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-weight: 700;
+        font-size: clamp(6rem, 18vw, 12rem);
+        line-height: 0.9;
+        color: var(--brown);
+        position: relative;
+        margin-bottom: 1rem;
+    }
+    .error-number .zero { color: var(--rust); }
+    .sold-stamp {
+        display: inline-block;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        color: var(--rust);
+        border: 3px solid var(--rust);
+        padding: 0.15rem 0.4rem;
+        letter-spacing: 0.15em;
+        transform: rotate(18deg);
+        position: absolute;
+        top: 20%; right: -5px;
+        opacity: 0.85;
+    }
+    .error-headline {
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: 1.4rem;
+        color: var(--faded);
+        margin-bottom: 0.5rem;
+    }
+    .error-subtext {
+        color: var(--faded);
+        max-width: 360px;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+    .error-divider {
+        width: 60px; height: 2px;
+        background: var(--tan);
+        margin: 0 auto 2rem;
+    }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn {
+        font-family: 'Courier New', monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 0.7rem 1.6rem;
+        border: 2px solid var(--brown);
+        transition: all 0.18s ease;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .btn-primary { background: var(--brown); color: var(--cream); }
+    .btn-primary:hover { background: var(--rust); border-color: var(--rust); }
+    .btn-secondary { background: transparent; color: var(--brown); }
+    .btn-secondary:hover { background: var(--tan); }
+</style>
+
+<div class="error-page">
+    <div class="price-tag">Item #404 &nbsp;·&nbsp; Not in stock</div>
+
+    <div class="error-number">
+        4<span class="zero">0</span>4
+        <span class="sold-stamp">SOLD</span>
+    </div>
+
+    <p class="error-headline">Looks like this one got away.</p>
+    <p class="error-subtext">
+        The page you're looking for has been thrifted, resold, or never existed in the first place.
+        Happens to the best of us.
+    </p>
+
+    <div class="error-divider"></div>
+
+    <div class="btn-row">
+        <a href="/" class="btn btn-primary">Back to Home</a>
+        <a href="/shop" class="btn btn-secondary">Browse the Shop</a>
+    </div>
+</div>
