@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}} - 401 Thrift</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    {{#if stripeJS}}
+    <script src="https://js.stripe.com/v3/"></script>
+    {{/if}}
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <img src="/images/logo.png" alt="401 Thrift Logo - Vintage clothing and unique finds" class="logo">
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="/" class="{{#if activeHome}}active{{/if}}">Home</a></li>
+                <li><a href="/shop" class="{{#if activeShop}}active{{/if}}">Shop</a></li>
+                <li><a href="/about" class="{{#if activeAbout}}active{{/if}}">About</a></li>
+                <li><a href="/contact" class="{{#if activeContact}}active{{/if}}">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Page Content -->
+    <div class="content">
+        {{{body}}}
+    </div>
+
+    {{#if scriptHome}}
+    <script src="/js/script.js"></script>
+    {{/if}}
+    {{#if scriptAbout}}
+    <script src="/js/about.js"></script>
+    {{/if}}
+    {{#if scriptContact}}
+    <script src="/js/contact.js"></script>
+    {{/if}}
+    {{#if scriptCheckout}}
+    <script src="/js/config.js"></script>
+    <script src="/js/checkout.js"></script>
+    {{/if}}
+
+</body>
+</html>

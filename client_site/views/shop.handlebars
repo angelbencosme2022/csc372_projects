@@ -1,0 +1,48 @@
+<!-- Main Heading -->
+<h1>Shop Our Collection</h1>
+
+<!-- Introduction -->
+<p>
+    Browse our curated selection of vintage and secondhand treasures. Each item has been carefully selected 
+    for quality and style. You can purchase items directly at the listed price or place a bid for a chance 
+    to get an even better deal!
+</p>
+
+<!-- Filter Section -->
+<h2>Filter by Category</h2>
+<div class="filter-section">
+    <button class="filter-btn active" data-category="all">All Items</button>
+    <button class="filter-btn" data-category="clothing">Clothing</button>
+    <button class="filter-btn" data-category="accessories">Accessories</button>
+    <button class="filter-btn" data-category="shoes">Shoes</button>
+</div>
+
+<!-- Products Grid -->
+<h2>Available Items</h2>
+
+<div class="products-grid">
+    {{#each products}}
+    <div class="product-card" data-category="{{this.category}}">
+        <img src="/images/{{this.image}}" alt="{{this.imageAlt}}" class="product-image">
+        <div class="product-info">
+            <h3>{{this.name}}</h3>
+            <p class="product-description">{{this.description}}</p>
+            <p class="product-price">Buy Now: ${{this.buyPrice}}</p>
+            <p class="product-bid">Current Bid: ${{this.currentBid}}</p>
+            <button class="buy-btn">Buy Now</button>
+            <button class="bid-btn">Place Bid</button>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<!-- Shopping Info -->
+<div class="shop-info">
+    <h2>How Bidding Works</h2>
+    <p>
+        When you place a bid on an item, you're entering a competitive auction. Bidding typically runs for 
+        3-7 days depending on the item. You'll be notified if you're outbid, and the highest bidder wins 
+        when the auction closes. Don't want to wait? Use the "Buy Now" button to purchase immediately at 
+        the listed price!
+    </p>
+</div>
