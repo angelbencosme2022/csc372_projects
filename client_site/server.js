@@ -54,14 +54,21 @@ function serveStaticFile(res, filePath, ext) {
 }
 
 // ===== URL → FILE PATH MAP =====
-// Maps clean URL paths to files inside the public folder
+// Maps clean URL paths to files inside the public folder.
+// Includes both clean URLs (/about) and .html extension URLs (/about.html)
+// so that href="about.html" links in the HTML files work without modification.
 const routes = {
-    '/':         'public/index.html',
-    '/index':    'public/index.html',
-    '/shop':     'public/shop.html',
-    '/about':    'public/about.html',
-    '/contact':  'public/contact.html',
-    '/checkout': 'public/checkout.html',
+    '/':                'public/index.html',
+    '/index':           'public/index.html',
+    '/index.html':      'public/index.html',
+    '/shop':            'public/shop.html',
+    '/shop.html':       'public/shop.html',
+    '/about':           'public/about.html',
+    '/about.html':      'public/about.html',
+    '/contact':         'public/contact.html',
+    '/contact.html':    'public/contact.html',
+    '/checkout':        'public/checkout.html',
+    '/checkout.html':   'public/checkout.html',
 };
 
 // ===== CREATE SERVER =====
