@@ -13,10 +13,10 @@
         <img src="images/logo.png" alt="401 Thrift Logo - Vintage clothing and unique finds" class="logo">
         <nav>
             <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.php" class="active">Home</a></li>
+                <li><a href="shop.php">Shop</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
     </div>
