@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/angelbencosme/
+    - export DEPLOYPATH=/home2/angelbencosme/csc372_project
     - /bin/cp -R * $DEPLOYPATH
