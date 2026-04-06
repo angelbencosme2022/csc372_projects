@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 $formStatus  = thriftDbConfigured()
                     ? 'Message saved, but email delivery is not configured on this machine. Your submission is still stored in the database.'
-                    : 'Email delivery is not configured on this machine. Configure your database and mail settings on cPanel before going live.';
+                    : 'Email delivery is not configured on this machine. Configure your database credentials in includes/database-connection.php and set up mail before going live.';
                 $statusClass = 'success';
                 $_SESSION['messages_sent']++;
                 $formData    = ['name' => '', 'email' => '', 'subject' => '', 'message' => ''];

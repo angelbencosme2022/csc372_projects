@@ -33,8 +33,8 @@ $usesDatabase = thriftDbConfigured();
             </p>
         <?php else: ?>
             <p class="form-status error">
-                Database not configured yet. The shop is showing fallback sample products until you update `db/config.php`
-                and import `db/schema.sql`.
+                Database not configured yet. The shop is showing fallback sample products until you update
+                `includes/database-connection.php` with valid MySQL credentials.
             </p>
         <?php endif; ?>
 

@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 if (!thriftDbConfigured()) {
     jsonResponse([
         'success' => false,
-        'error' => 'Database is not configured. Update db/config.php and import db/schema.sql on your cPanel host.'
+        'error' => 'Database is not configured. Update includes/database-connection.php with valid MySQL credentials.'
     ], 500);
 }
 

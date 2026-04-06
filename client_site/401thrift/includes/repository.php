@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/database-connection.php';
 
 function normalizeProductRow(array $row): array {
     return [

@@ -107,7 +107,7 @@ if ($dbReady && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inventory
                 exit;
             }
         } catch (Throwable $e) {
-            $flash = ['type' => 'error', 'message' => 'Database write failed. Check your cPanel database settings.'];
+            $flash = ['type' => 'error', 'message' => 'Database write failed. Check the credentials in includes/database-connection.php.'];
         }
     } else {
         $flash = ['type' => 'error', 'message' => 'Fix the validation errors and try again.'];
@@ -173,9 +173,9 @@ if ($dbReady) {
         <?php if (!$dbReady): ?>
             <div class="db-setup-card">
                 <h2>Database Setup Required</h2>
-                <p>Before this page can write to MySQL on cPanel:</p>
-                <p>1. Import `db/schema.sql` into your cPanel MySQL database.</p>
-                <p>2. Update `db/config.php` with your database host, name, username, and password.</p>
+                <p>Before this page can write to MySQL:</p>
+                <p>1. Import `db/schema.sql` into your MySQL database.</p>
+                <p>2. Update `includes/database-connection.php` with your database host, name, username, and password.</p>
                 <?php if ($dbError !== ''): ?>
                     <p class="form-status error"><?= htmlspecialchars($dbError) ?></p>
                 <?php endif; ?>
