@@ -1,81 +1,87 @@
+<?php
+$activePage = 'home';
+require_once 'includes/cart.php';   // starts session, handles POST
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>401 Thrift - Unique Finds, Unbeatable Prices</title>
+    <title>401 Thrift — Unique Finds, Unbeatable Prices</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- Header Section -->
-    <div class="header">
-        <img src="images/logo.png" alt="401 Thrift Logo - Vintage clothing and unique finds" class="logo">
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="index.php" class="active">Home</a></li>
-                <li><a href="shop.php">Shop</a></li>
-                <li><a href="about.php">About</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
+    <?php include 'includes/header.php'; ?>
 
-    <!-- Main Content Section -->
-    <div class="content">
-        <!-- Main Heading -->
+    <!-- Hero -->
+    <div class="hero">
         <h1>Welcome to 401 Thrift</h1>
-
-        <!-- Introduction Paragraph -->
         <p>
-            401 Thrift is your destination for one-of-a-kind vintage clothing, accessories, and unique secondhand finds. 
-            We curate the best thrift discoveries and bring them directly to you. Whether you're hunting for vintage 
-            streetwear, retro accessories, or sustainable fashion alternatives, our collection features hand-picked items 
-            that combine quality, style, and affordability.
+            One-of-a-kind vintage clothing, accessories, and secondhand finds —
+            hand-picked, quality-checked, and brought straight to you.
         </p>
-
-        <!-- Featured Item Image -->
-        <img src="images/gaming_hat.png" alt="Featured vintage jacket from current collection" class="content-image">
-
-        <p>
-            Every item on 401 Thrift has been carefully selected and inspected for quality. Browse our rotating inventory, 
-            place bids on your favorite pieces, or purchase items outright. New finds are added regularly, so check back 
-            often to discover something special before it's gone!
-        </p>
-
-        <!-- How It Works Section -->
-        <h2>How It Works</h2>
-        
-        <p>
-            Shopping at 401 Thrift is simple and exciting. Browse our current collection of thrifted treasures, each 
-            photographed and described in detail. Found something you love? You have two options: purchase it immediately 
-            at the listed price, or place a bid if you're looking for a deal. Our bidding system runs for a set period, 
-            giving everyone a fair chance to own unique pieces at competitive prices.
-        </p>
-
-        <!-- Sample Product Image -->
-        <img src="images/elmo_hat.png" alt="Vintage denim jacket available for bidding" class="content-image">
-
-        <!-- Why Choose Us Section -->
-        <h2>Why Choose 401 Thrift?</h2>
-
-        <p>
-            At 401 Thrift, sustainability meets style. By choosing secondhand, you're not only finding unique pieces that 
-            stand out from mass-produced fashion, but you're also making an environmentally conscious choice. Each purchase 
-            supports sustainable shopping practices and gives quality items a second life. Plus, our transparent pricing 
-            and bidding system ensures you always get the best value for authentic vintage and thrift finds.
-        </p>
-
-        <!-- Call to Action Message -->
-        <p id="cta-message">
-            Start exploring our collection today and discover your next favorite piece!
-        </p>
-
-        <!-- Interactive Button -->
         <button id="explore-btn" class="cta-button">Browse Latest Finds</button>
     </div>
 
-    <!-- Link to External JavaScript File -->
-    <script src="js/script.js"></script>
+    <div class="content">
+
+        <p>
+            401 Thrift is your destination for one-of-a-kind vintage clothing, accessories, and unique secondhand finds.
+            We curate the best thrift discoveries and bring them directly to you. Whether you're hunting for vintage
+            streetwear, retro accessories, or sustainable fashion alternatives, our collection features hand-picked items
+            that combine quality, style, and affordability.
+        </p>
+
+        <img src="images/gaming_hat.png"
+             alt="Featured vintage item from current collection"
+             class="content-image"
+             onerror="this.style.display='none'">
+
+        <p>
+            Every item on 401 Thrift has been carefully selected and inspected for quality. Browse our rotating inventory,
+            place bids on your favorite pieces, or purchase items outright. New finds are added regularly, so check back
+            often to discover something special before it's gone!
+        </p>
+
+        <h2>How It Works</h2>
+        <p>
+            Shopping at 401 Thrift is simple and exciting. Browse our current collection of thrifted treasures, each
+            photographed and described in detail. Found something you love? You have two options: purchase it immediately
+            at the listed price, or place a bid if you're looking for a deal. Our bidding system runs for a set period,
+            giving everyone a fair chance to own unique pieces at competitive prices.
+        </p>
+
+        <img src="images/elmo_hat.png"
+             alt="Vintage item available for bidding"
+             class="content-image"
+             onerror="this.style.display='none'">
+
+        <h2>Why Choose 401 Thrift?</h2>
+        <p>
+            At 401 Thrift, sustainability meets style. By choosing secondhand, you're not only finding unique pieces that
+            stand out from mass-produced fashion, but you're also making an environmentally conscious choice. Each purchase
+            supports sustainable shopping practices and gives quality items a second life. Plus, our transparent pricing
+            and bidding system ensures you always get the best value for authentic vintage and thrift finds.
+        </p>
+
+        <p id="cta-message">Start exploring our collection today and discover your next favorite piece!</p>
+        <button id="shop-btn" class="cta-button">Shop Now</button>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; <?= date('Y') ?> 401 Thrift &mdash; Sustainable fashion, one find at a time.</p>
+    </footer>
+
+    <script>
+        // Explore / Shop buttons navigate to shop
+        document.getElementById('explore-btn').addEventListener('click', () => {
+            window.location.href = 'shop.html';
+        });
+        document.getElementById('shop-btn').addEventListener('click', () => {
+            window.location.href = 'shop.html';
+        });
+    </script>
 </body>
 </html>
