@@ -13,7 +13,7 @@ $total     = $subtotal + $shipping;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Cart - 401 Thrift</title>
+    <title>Your Cart — 401 Thrift</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -31,6 +31,7 @@ $total     = $subtotal + $shipping;
         <?php else: ?>
 
             <div class="cart-container">
+
                 <!-- Cart Items -->
                 <div class="cart-items-list">
                     <table class="cart-table">
@@ -56,7 +57,8 @@ $total     = $subtotal + $shipping;
                                     <td class="cart-item-info">
                                         <img src="<?= htmlspecialchars($p['image']) ?>"
                                              alt="<?= htmlspecialchars($p['image_alt']) ?>"
-                                             class="cart-thumb">
+                                             class="cart-thumb"
+                                             onerror="this.style.display='none'">
                                         <span><?= htmlspecialchars($p['name']) ?></span>
                                     </td>
                                     <td>
@@ -126,14 +128,18 @@ $total     = $subtotal + $shipping;
                         <strong>Total</strong>
                         <strong>$<?= number_format($total, 2) ?></strong>
                     </div>
-
                     <a href="checkout.php" class="cta-button checkout-link">Proceed to Checkout</a>
                     <a href="shop.php" class="continue-shopping">&#8592; Continue Shopping</a>
                 </div>
+
             </div>
 
         <?php endif; ?>
     </div>
+
+    <footer class="footer">
+        <p>&copy; <?= date('Y') ?> 401 Thrift &mdash; Sustainable fashion, one find at a time.</p>
+    </footer>
 
 </body>
 </html>

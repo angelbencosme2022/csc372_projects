@@ -77,10 +77,10 @@ require_once 'includes/cart.php';   // starts session, handles POST
     <script>
         // Explore / Shop buttons navigate to shop
         document.getElementById('explore-btn').addEventListener('click', () => {
-            window.location.href = 'shop.html';
+            window.location.href = 'shop.php';
         });
         document.getElementById('shop-btn').addEventListener('click', () => {
-            window.location.href = 'shop.html';
+            window.location.href = 'shop.php';
         });
     </script>
 </body>
