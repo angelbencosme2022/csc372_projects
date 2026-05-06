@@ -33,8 +33,8 @@ require_once 'includes/cart.php';   // starts session, handles POST
             that combine quality, style, and affordability.
         </p>
 
-        <img src="images/gaming_hat.png"
-             alt="Featured vintage item from current collection"
+        <img src="images/dragon_ball_hoodie.jpg"
+             alt="Dragon Ball graphic hoodie from the current collection"
              class="content-image"
              onerror="this.style.display='none'">
 
@@ -52,8 +52,8 @@ require_once 'includes/cart.php';   // starts session, handles POST
             giving everyone a fair chance to own unique pieces at competitive prices.
         </p>
 
-        <img src="images/elmo_hat.png"
-             alt="Vintage item available for bidding"
+        <img src="images/scenic_graphic_tee.jpg"
+             alt="Scenic photo graphic tee available in the shop"
              class="content-image"
              onerror="this.style.display='none'">
 

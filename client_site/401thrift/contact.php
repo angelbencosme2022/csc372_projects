@@ -34,10 +34,11 @@ if (!isset($_SESSION['messages_sent'])) {
 
 require_once __DIR__ . '/includes/validate.php';
 require_once __DIR__ . '/includes/cart.php';   // for nav cart count
-require_once __DIR__ . '/includes/repository.php';
+require_once __DIR__ . '/includes/contact-service.php';
 
 $activePage    = 'contact';
-$validSubjects = ['general', 'item', 'order', 'selling', 'bidding', 'other'];
+$subjectLabels = thriftContactSubjectLabels();
+$validSubjects = array_keys($subjectLabels);
 
 $formData = ['name' => '', 'email' => '', 'subject' => '', 'message' => ''];
 $errors   = ['name' => '', 'email' => '', 'subject' => '', 'message' => ''];
@@ -51,67 +52,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $formData['subject'] = $_POST['subject']      ?? '';
     $formData['message'] = trim($_POST['message'] ?? '');
 
-    if (!validateText($formData['name'], 2, 100)) {
-        $errors['name'] = 'Name must be between 2 and 100 characters.';
-    }
-    if (!validateText($formData['email'], 3, 254) || !filter_var($formData['email'], FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] = 'A valid email address is required.';
-    }
-    if (!validateOption($formData['subject'], $validSubjects)) {
-        $errors['subject'] = 'Please select a valid subject.';
-    }
-    if (!validateText($formData['message'], 10, 2000)) {
-        $errors['message'] = 'Message must be between 10 and 2000 characters.';
-    }
+    $errors = thriftValidateContactPayload($formData);
 
-    if (empty(implode('', array_filter($errors)))) {
-        if (thriftDbConfigured()) {
-            try {
-                saveContactMessage($formData);
-            } catch (Throwable $e) {
-                $formStatus = 'Sorry, we could not save your message right now. Please try again in a moment.';
-                $statusClass = 'error';
+    if (empty($errors)) {
+        $result = thriftProcessContactSubmission($formData);
+
+        if ($result['success']) {
+            $_SESSION['messages_sent']++;
+            $formStatus = $result['warning'] ?? $result['message'];
+            $statusClass = 'success';
+            $formData = ['name' => '', 'email' => '', 'subject' => '', 'message' => ''];
+        } else {
+            $formStatus = $result['message'];
+            if (!empty($result['detail'])) {
+                $formStatus .= ' ' . $result['detail'];
             }
-        }
-
-        if ($statusClass !== 'error') {
-            $safeName    = htmlspecialchars($formData['name']);
-            $safeEmail   = htmlspecialchars($formData['email']);
-            $safeSubject = htmlspecialchars($formData['subject']);
-            $safeMessage = htmlspecialchars($formData['message']);
-
-            $to      = 'hello@401thrift.com';
-            $headers = "From: {$safeName} <{$safeEmail}>\r\nReply-To: {$safeEmail}\r\nContent-Type: text/plain; charset=UTF-8";
-            $body    = "Subject: {$safeSubject}\n\nFrom: {$safeName} ({$safeEmail})\n\n{$safeMessage}";
-
-            if (mail($to, "401 Thrift Contact: {$safeSubject}", $body, $headers)) {
-                $_SESSION['messages_sent']++;
-                $formStatus  = "Thank you! Your message has been sent. We'll get back to you within 24 hours.";
-                $statusClass = 'success';
-                $formData    = ['name' => '', 'email' => '', 'subject' => '', 'message' => ''];
-            } else {
-                $formStatus  = thriftDbConfigured()
-                    ? 'Message saved, but email delivery is not configured on this machine. Your submission is still stored in the database.'
-                    : 'Email delivery is not configured on this machine. Configure your database credentials in includes/database-connection.php and set up mail before going live.';
-                $statusClass = 'success';
-                $_SESSION['messages_sent']++;
-                $formData    = ['name' => '', 'email' => '', 'subject' => '', 'message' => ''];
-            }
+            $statusClass = 'error';
         }
     } else {
-        $formStatus  = implode(' ', array_filter($errors));
+        $formStatus  = 'Please correct the highlighted fields and try again.';
         $statusClass = 'error';
     }
 }
-
-$subjectLabels = [
-    'general' => 'General Inquiry',
-    'item'    => 'Question About an Item',
-    'order'   => 'Order Status',
-    'selling' => 'I Want to Sell Items',
-    'bidding' => 'Bidding Question',
-    'other'   => 'Other',
-];
 ?>
 <!DOCTYPE html>
 <html lang="en">

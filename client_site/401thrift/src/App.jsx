@@ -90,7 +90,7 @@ function App() {
       <Header cartCount={cartCount} />
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage products={seedProducts} />} />
           <Route path="/about" element={<AboutPage />} />
           <Route
             path="/shop"

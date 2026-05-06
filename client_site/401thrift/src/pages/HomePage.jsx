@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import HeroSection from "../components/HeroSection";
 import SectionHeading from "../components/SectionHeading";
 
-function HomePage() {
+function HomePage({ products = [] }) {
+  const featuredProducts = products.slice(-2);
+
   return (
     <>
       <HeroSection
@@ -59,6 +61,34 @@ function HomePage() {
             Ask a Question
           </Link>
         </section>
+
+        {featuredProducts.length > 0 ? (
+          <section className="featured-products-section">
+            <SectionHeading
+              title="Latest Finds"
+              intro="Freshly added thrifted pieces from the newest drop, ready to shop now or bid on."
+            />
+            <div className="featured-products-grid">
+              {featuredProducts.map((product) => (
+                <article className="featured-product-card" key={product.id}>
+                  <img
+                    className="featured-product-image"
+                    src={product.image}
+                    alt={product.imageAlt ?? product.name}
+                  />
+                  <div className="featured-product-copy">
+                    <p className="product-category">{product.category}</p>
+                    <h3>{product.name}</h3>
+                    <p>{product.description}</p>
+                    <Link className="cta-button" to="/shop">
+                      View in Shop
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
       </section>
     </>
   );

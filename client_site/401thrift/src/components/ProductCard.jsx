@@ -2,7 +2,11 @@ function ProductCard({ product, onAddToCart }) {
   return (
     <article className="product-card">
       <div className="product-visual">
-        <span>{product.imageLabel}</span>
+        {product.image ? (
+          <img className="product-photo" src={product.image} alt={product.imageAlt ?? product.name} />
+        ) : (
+          <span>{product.imageLabel}</span>
+        )}
       </div>
       <div className="product-info">
         <div className="product-meta">

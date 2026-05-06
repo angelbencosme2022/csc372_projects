@@ -11,10 +11,20 @@ const initialFormState = {
   message: "",
 };
 
+const subjectOptions = [
+  { value: "general", label: "General Inquiry" },
+  { value: "item", label: "Question About an Item" },
+  { value: "order", label: "Order Status" },
+  { value: "selling", label: "I Want to Sell Items" },
+  { value: "bidding", label: "Bidding Question" },
+  { value: "other", label: "Other" },
+];
+
 function ContactPage() {
   const [formData, setFormData] = useState(initialFormState);
   const [errors, setErrors] = useState({});
   const [statusMessage, setStatusMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [openQuestion, setOpenQuestion] = useState(0);
 
   const handleChange = (event) => {
@@ -36,8 +46,8 @@ function ContactPage() {
       nextErrors.email = "Enter a valid email address.";
     }
 
-    if (formData.subject.trim().length < 3) {
-      nextErrors.subject = "Subject must be at least 3 characters long.";
+    if (!subjectOptions.some((option) => option.value === formData.subject)) {
+      nextErrors.subject = "Please choose a valid subject.";
     }
 
     if (formData.message.trim().length < 10) {
@@ -47,7 +57,7 @@ function ContactPage() {
     return nextErrors;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const nextErrors = validateForm();
     setErrors(nextErrors);
@@ -57,8 +67,45 @@ function ContactPage() {
       return;
     }
 
-    setStatusMessage("Thanks for reaching out. Your message is ready to send.");
-    setFormData(initialFormState);
+    setIsSubmitting(true);
+    setStatusMessage("");
+
+    const subjectLabel =
+      subjectOptions.find((o) => o.value === formData.subject)?.label || formData.subject;
+
+    try {
+      const response = await fetch("/api/resend/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer re_XqrV941L_2DNvjmduRdrcmy58rggTCJCB",
+        },
+        body: JSON.stringify({
+          from: "401 Thrift <onboarding@resend.dev>",
+          to: ["angelbencosme2022@gmail.com"],
+          reply_to: [formData.email],
+          subject: `401 Thrift Contact: ${subjectLabel}`,
+          html: `<p><strong>Name:</strong> ${formData.name}</p><p><strong>Email:</strong> ${formData.email}</p><p><strong>Subject:</strong> ${subjectLabel}</p><p><strong>Message:</strong><br>${formData.message.replace(/\n/g, "<br>")}</p>`,
+        }),
+      });
+
+      const payload = await response.json();
+
+      if (!response.ok) {
+        setStatusMessage(
+          payload.message || "We could not send your message right now."
+        );
+        return;
+      }
+
+      setErrors({});
+      setStatusMessage("Thanks for the interest. We will contact you shortly.");
+      setFormData(initialFormState);
+    } catch (error) {
+      setStatusMessage("We could not send your message right now. Please try again in a moment.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -91,13 +138,14 @@ function ContactPage() {
 
             <div className="form-group">
               <label htmlFor="subject">Subject</label>
-              <input
-                id="subject"
-                name="subject"
-                type="text"
-                value={formData.subject}
-                onChange={handleChange}
-              />
+              <select id="subject" name="subject" value={formData.subject} onChange={handleChange}>
+                <option value="">-- Select a subject --</option>
+                {subjectOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
               {errors.subject ? <span className="field-error">{errors.subject}</span> : null}
             </div>
 
@@ -114,8 +162,8 @@ function ContactPage() {
             </div>
 
             {statusMessage ? <p className="form-status">{statusMessage}</p> : null}
-            <button className="submit-btn" type="submit">
-              Send Message
+            <button className="submit-btn" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>

@@ -411,16 +411,25 @@ textarea {
   min-height: 12rem;
   display: grid;
   place-items: end start;
-  padding: 1rem;
   background:
     linear-gradient(145deg, rgba(192, 67, 26, 0.84), rgba(78, 112, 96, 0.84)),
     var(--sage);
   color: white;
+  overflow: hidden;
 }
 
 .product-visual span {
+  padding: 1rem;
   font-family: var(--font-display);
   font-size: 1.4rem;
+}
+
+.product-photo {
+  width: 100%;
+  height: 100%;
+  min-height: 18rem;
+  object-fit: cover;
+  display: block;
 }
 
 .product-info {
@@ -467,6 +476,42 @@ textarea {
 
 .bid-btn {
   background: var(--sage);
+}
+
+.featured-products-section {
+  margin-top: 2rem;
+}
+
+.featured-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.featured-product-card {
+  display: grid;
+  gap: 0;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  background: rgba(255, 254, 249, 0.9);
+  border: 1px solid rgba(216, 203, 184, 0.8);
+  box-shadow: var(--shadow);
+}
+
+.featured-product-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.featured-product-copy {
+  padding: 1.2rem;
+}
+
+.featured-product-copy h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
 }
 
 .visitor-info,
