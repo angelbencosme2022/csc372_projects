@@ -78,11 +78,11 @@ function ContactPage() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer re_XqrV941L_2DNvjmduRdrcmy58rggTCJCB",
+          Authorization: `Bearer ${import.meta.env.VITE_RESEND_API_KEY}`,
         },
         body: JSON.stringify({
           from: "401 Thrift <onboarding@resend.dev>",
-          to: ["angelbencosme2022@gmail.com"],
+          to: [import.meta.env.VITE_CONTACT_RECIPIENT],
           reply_to: [formData.email],
           subject: `401 Thrift Contact: ${subjectLabel}`,
           html: `<p><strong>Name:</strong> ${formData.name}</p><p><strong>Email:</strong> ${formData.email}</p><p><strong>Subject:</strong> ${subjectLabel}</p><p><strong>Message:</strong><br>${formData.message.replace(/\n/g, "<br>")}</p>`,
